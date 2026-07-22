@@ -11,6 +11,7 @@ const nav = [
   { href: "/rallies", label: "Rally ADV" },
   { href: "/tienda", label: "Tienda" },
   { href: "/guias", label: "Guías ADV" },
+  { href: "/links", label: "Pit Stop" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];

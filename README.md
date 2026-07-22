@@ -40,7 +40,17 @@ Abre [http://localhost:3000](http://localhost:3000).
 | `/guias` | Guías ADV (contenido editorial) |
 | `/nosotros` | Marca y redes |
 | `/contacto` | Contacto |
+| `/links` · `/l` · `links.motorrax.com` | **Pit Stop** — link-in-bio (redes, deals, rodadas) |
 | `/sitemap.xml` · `/robots.txt` | SEO |
+
+### Pit Stop (link-in-bio)
+
+Página tipo Linktree para bios de Instagram, Facebook, TikTok y CTAs en video:
+
+- **Nombre:** Pit Stop  
+- **URLs:** `motorrax.net/links` · `motorrax.net/l` (corto) · `links.motorrax.com` (subdominio)  
+- **Editar botones:** `src/lib/link-hub.ts`  
+- **DNS (Vercel u otro):** CNAME `links` → tu dominio; el `middleware` reescribe `/` del subdominio a `/links`.
 
 ## SEO
 

@@ -12,6 +12,7 @@ const links = [
   { href: "/rallies", label: "Rally ADV" },
   { href: "/tienda", label: "Tienda" },
   { href: "/guias", label: "Guías adventure" },
+  { href: "/links", label: "Pit Stop (todos los links)" },
   { href: "/nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
 ];
