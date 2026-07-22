@@ -48,9 +48,9 @@ Abre [http://localhost:3000](http://localhost:3000).
 Página tipo Linktree para bios de Instagram, Facebook, TikTok y CTAs en video:
 
 - **Nombre:** Pit Stop  
-- **URLs:** `motorrax.net/links` · `motorrax.net/l` (corto) · `links.motorrax.com` (subdominio)  
+- **URLs:** `motorrax.com/links` · `motorrax.com/l` (corto) · `links.motorrax.com` (subdominio)  
 - **Editar botones:** `src/lib/link-hub.ts`  
-- **DNS (Vercel u otro):** CNAME `links` → tu dominio; el `middleware` reescribe `/` del subdominio a `/links`.
+- **DNS (Vercel):** nameservers `ns1/ns2.vercel-dns.com` + add **both** `motorrax.com` and `links.motorrax.com` in Project → Settings → Domains. Middleware rewrites subdomain `/` → `/links`.
 
 ## SEO
 

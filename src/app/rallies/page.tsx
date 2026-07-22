@@ -21,7 +21,7 @@ export default async function RalliesPage() {
       <SectionHeading
         eyebrow="Serie nacional"
         title="Rally ADV"
-        description="Eventos multi-día de adventure motorcycle. La tribu MOTORRAX se lanza a Sierra Gorda, Baja, Chiapas y el corazón de México."
+        description="Eventos multi-día de adventure motorcycle. El grupo MOTORRAX se lanza a Sierra Gorda, Baja, Chiapas y el corazón de México."
       />
 
       {tours.length > 0 && (

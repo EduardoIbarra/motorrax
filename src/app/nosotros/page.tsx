@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/config";
 import { SectionHeading } from "@/components/SectionHeading";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Nosotros — la tribu adventure",
+  title: "Nosotros — el grupo adventure",
   description:
     "MOTORRAX es la comunidad de adventure motorcycle en México: maxitrail, off-road, Rally ADV y contenido real desde Monterrey hacia todo el país.",
   path: "/nosotros",
@@ -28,7 +28,7 @@ export default function NosotrosPage() {
       <div className="space-y-6 text-muted leading-relaxed">
         <p>
           <strong className="text-foreground">MOTORRAX</strong> es la cara
-          adventure de una tribu que no se queda en el asfalto. Nacimos alrededor
+          adventure de un grupo que no se queda en el asfalto. Nacimos alrededor
           del maxitrail — BMW R 1250 GS y hermanas de categoría — con rodadas
           Euromotors Monterrey, track days, instalaciones tech (CarPlay /
           Android Auto) y el{" "}

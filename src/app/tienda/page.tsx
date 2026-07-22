@@ -19,7 +19,7 @@ export default async function TiendaPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <SectionHeading
-        eyebrow="Gear de la tribu"
+        eyebrow="Gear del grupo"
         title="Tienda"
         description="Merch oficial de rallies y rodadas. Edición limitada para la comunidad ADV."
       />

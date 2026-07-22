@@ -13,7 +13,6 @@ export function middleware(request: NextRequest) {
 
   const isLinksSubdomain =
     host === "links.motorrax.com" ||
-    host === "links.motorrax.net" ||
     host.startsWith("links.localhost") ||
     host.startsWith("links.127.0.0.1");
 

@@ -2,7 +2,7 @@
  * Pit Stop — link-in-bio hub for MOTORRAX.
  * Edit this file to add/remove buttons shown at /links, /l, and links.motorrax.com
  *
- * Mention on video: "visita links.motorrax.com" or "motorrax.net/l"
+ * Mention on video: "visita links.motorrax.com" or "motorrax.com/l"
  */
 
 export type LinkItem = {
@@ -66,7 +66,7 @@ export const pitStopLinks: LinkItem[] = [
   {
     id: "web",
     title: "Sitio MOTORRAX",
-    subtitle: "motorrax.net",
+    subtitle: "motorrax.com",
     href: "/",
     group: "featured",
     sameTab: true,
@@ -100,7 +100,7 @@ export const pitStopLinks: LinkItem[] = [
   {
     id: "tiktok",
     title: "TikTok",
-    subtitle: "Clips de la tribu",
+    subtitle: "Clips del grupo",
     href: "https://www.tiktok.com/@motorrax",
     group: "social",
     badge: "🎵",
@@ -174,7 +174,7 @@ export const pitStopLinks: LinkItem[] = [
   {
     id: "contacto",
     title: "Contacto / collabs",
-    subtitle: "hola@motorrax.net",
+    subtitle: "hola@motorrax.com",
     href: "/contacto",
     group: "more",
     sameTab: true,

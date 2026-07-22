@@ -23,7 +23,7 @@ const guides = [
   {
     icon: Mountain,
     title: "Off-road en Nuevo León",
-    body: "Rutas clásicas de la tribu: Ciénega del Toro, Rayones, Potrero Redondo, Paredón, mina de mármol y rodadas desde Euromotors MTY. Preparación de tanque, agua y equipo.",
+    body: "Rutas clásicas del grupo: Ciénega del Toro, Rayones, Potrero Redondo, Paredón, mina de mármol y rodadas desde Euromotors MTY. Preparación de tanque, agua y equipo.",
     tag: "Rutas",
   },
   {
@@ -44,7 +44,7 @@ export default function GuiasPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <SectionHeading
-        eyebrow="Escuela de la tribu"
+        eyebrow="Escuela del grupo"
         title="Guías adventure"
         description="Contenido inspirado en el canal y redes de MOTORRAX: maxitrail, off-road y la vida ADV en México."
       />

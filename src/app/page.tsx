@@ -62,7 +62,7 @@ export default async function HomePage() {
             Adventure motorcycle · México
           </p>
           <h1 className="max-w-3xl text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-6xl md:text-7xl">
-            La tribu del{" "}
+            El grupo del{" "}
             <span className="text-accent">off-road</span>
             <br />y el maxitrail
           </h1>
@@ -114,7 +114,7 @@ export default async function HomePage() {
             {
               icon: Users,
               title: "Comunidad",
-              text: "Contenido, tips de maxitrail y la tribu MOTORRAX en Instagram, Facebook y YouTube.",
+              text: "Contenido, tips de maxitrail y el grupo MOTORRAX en Instagram, Facebook y YouTube.",
             },
           ].map((item) => (
             <div
@@ -163,7 +163,7 @@ export default async function HomePage() {
               MOTORRAX nació del adventure motorcycle: maxitrail BMW, rodadas
               Euromotors MTY, track days y el Rally ADV por la Sierra Gorda y
               más allá. En Instagram y Facebook compartimos técnica, rutas y la
-              vida de la tribu; en YouTube, guías reales para levantar una
+              vida del grupo; en YouTube, guías reales para levantar una
               maxitrail, equipar tu moto y explorar México off-road.
             </p>
             <p className="mb-6 text-muted leading-relaxed">
@@ -190,7 +190,7 @@ export default async function HomePage() {
               { icon: Bike, label: "Maxitrail & ADV", sub: "BMW GS y más" },
               { icon: Shield, label: "Técnica segura", sub: "Tips de rodada" },
               { icon: Mountain, label: "Off-road MX", sub: "NL · Baja · QRO" },
-              { icon: Users, label: "Comunidad", sub: "Tribu MOTORRAX" },
+              { icon: Users, label: "Comunidad", sub: "Grupo MOTORRAX" },
             ].map((card) => (
               <div
                 key={card.label}
@@ -209,7 +209,7 @@ export default async function HomePage() {
       {products.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           <SectionHeading
-            eyebrow="Gear de la tribu"
+            eyebrow="Gear del grupo"
             title="Tienda y merch de rallies"
             description="Gorras, jerseys y edición limitada de eventos ADV."
             href="/tienda"
@@ -227,7 +227,7 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <div className="overflow-hidden rounded-3xl border border-card-border bg-card px-6 py-12 text-center sm:px-12">
           <h2 className="mb-3 text-3xl font-bold tracking-tight">
-            Únete a la tribu
+            Únete al grupo
           </h2>
           <p className="mx-auto mb-8 max-w-xl text-muted">
             Contenido adventure diario en redes: rutas, installs, track days y

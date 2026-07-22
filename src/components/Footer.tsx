@@ -30,7 +30,7 @@ export function Footer() {
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted">
             Comunidad de adventure motorcycle en México. Off-road, maxitrail,
-            Rally ADV y rodadas con la tribu que vive la moto más allá del
+            Rally ADV y rodadas con el grupo que vive la moto más allá del
             asfalto.
           </p>
         </div>

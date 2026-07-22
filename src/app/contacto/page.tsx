@@ -22,7 +22,7 @@ export default function ContactoPage() {
       <SectionHeading
         eyebrow="Hablemos"
         title="Contacto"
-        description="Colaboraciones, sponsors, prensa o sumarte a la tribu."
+        description="Colaboraciones, sponsors, prensa o sumarte al grupo."
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
