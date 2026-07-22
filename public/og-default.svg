@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0d10"/>
+      <stop offset="100%" stop-color="#1a2332"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="0" y="560" width="1200" height="70" fill="#e85d04"/>
+  <text x="80" y="280" font-family="Arial Black, sans-serif" font-size="96" fill="#f4f1ea" letter-spacing="12">MOTORRAX</text>
+  <text x="80" y="360" font-family="Arial, sans-serif" font-size="36" fill="#d4a373">Adventure motorcycle · México</text>
+  <text x="80" y="610" font-family="Arial, sans-serif" font-size="22" fill="#0b0d10" font-weight="bold">OFF-ROAD · RALLY ADV · COMUNIDAD</text>
+</svg>

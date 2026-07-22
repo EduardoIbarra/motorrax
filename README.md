@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MOTORRAX
 
-## Getting Started
+Sitio web SEO-friendly de **adventure motorcycle** para la comunidad MOTORRAX (México).
 
-First, run the development server:
+- **Stack:** Next.js (App Router) · TypeScript · Tailwind CSS v4 · Supabase
+- **Datos:** rutas, rallies, productos y sponsors desde el proyecto Supabase NorthBikers
+- **Marca:** contenido orientado a maxitrail / off-road / Rally ADV (Instagram `@_motorrax`, Facebook `/motorrax`, YouTube `@_motorrax`)
+
+## Inicio rápido
 
 ```bash
+npm install
+cp .env.example .env.local   # ya incluye URL/keys públicas de Supabase
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variables de entorno
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Descripción |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://aezxnubglexywadbjpgo.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Anon key (RLS) |
+| `NEXT_PUBLIC_SUPABASE_STORAGE_URL` | Storage público |
+| `NEXT_PUBLIC_SUPABASE_EDGE_URL` | Edge functions |
+| `NEXT_PUBLIC_SERVER_ROOT_API` | `https://api.northbikers.com` |
+| `NEXT_PUBLIC_FIREBASE_PAY_URL` | Cloud Function Stripe |
+| `NEXT_PUBLIC_SITE_URL` | URL canónica (SEO) |
 
-## Learn More
+## Páginas
 
-To learn more about Next.js, take a look at the following resources:
+| Ruta | Contenido |
+|------|-----------|
+| `/` | Hero adventure, rutas destacadas, tienda, sponsors |
+| `/rutas` | Listado + búsqueda (Supabase `routes`) |
+| `/rutas/[id]` | Detalle + JSON-LD Event + video YouTube |
+| `/rallies` | Rally ADV + tours MOTORRAX |
+| `/tienda` | Productos activos |
+| `/guias` | Guías ADV (contenido editorial) |
+| `/nosotros` | Marca y redes |
+| `/contacto` | Contacto |
+| `/sitemap.xml` · `/robots.txt` | SEO |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Metadata por página (title, description, Open Graph, Twitter)
+- `sitemap.ts` con rutas estáticas + dinámicas desde Supabase
+- `robots.ts`
+- JSON-LD Organization + WebSite + Event en detalle de ruta
+- `lang="es-MX"`, canonicals, keywords adventure motorcycle
 
-## Deploy on Vercel
+## Estructura
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+  app/           # App Router pages
+  components/    # UI
+  lib/           # config, supabase, data, seo, utils
+  types/         # tipos de DB
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+```bash
+npm run dev      # desarrollo
+npm run build    # producción
+npm run start    # servir build
+npm run lint     # ESLint
+```
+
+## Notas
+
+- Las imágenes de banners relativos se resuelven bajo el bucket `pictures` de Supabase Storage.
+- La anon key es pública (cliente); las políticas RLS del proyecto definen el acceso.
+- `publicURL` / app legacy: `https://northbikers-mrx.web.app/`
