@@ -101,7 +101,7 @@ export async function sendLeadEmails(input: SendLeadEmailsInput) {
     `;
 
     const adminRes = await resend.emails.send({
-      from: "MOTORRAX Leads <onboarding@resend.dev>",
+      from: "MOTORRAX Leads <contacto@northbikers.com>",
       to: [ADMIN_EMAIL],
       subject: `⚡ Nuevo Lead MOTORRAX: ${input.name} - ${input.desiredModel || "Consulta general"}`,
       html: adminHtml,
@@ -166,8 +166,12 @@ export async function sendLeadEmails(input: SendLeadEmailsInput) {
 
     const userHtml = `
       <div style="font-family: Arial, sans-serif; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
+        <div style="text-align: center; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; margin-bottom: 16px;">
+          <span style="font-size: 11px; font-weight: bold; color: #64748b; letter-spacing: 0.5px; uppercase;">MOTORRAX in collaboration with NorthBikers</span>
+        </div>
+
         <h2 style="color: #0284c7; margin-top: 0;">¡Hola, ${input.name}!</h2>
-        <p>Hemos recibido tus datos correctamente en <strong>MOTORRAX</strong>. Eduardo Ibarra se pondrá en contacto contigo muy pronto a través de WhatsApp o correo para brindarte atención personalizada y resolver todas tus dudas.</p>
+        <p>Hemos recibido tus datos correctamente en <strong>MOTORRAX</strong> (en colaboración con NorthBikers). Eduardo Ibarra se pondrá en contacto contigo muy pronto a través de WhatsApp o correo para brindarte atención personalizada y resolver todas tus dudas.</p>
         
         <p>A continuación te compartimos un resumen de tu solicitud:</p>
         <ul>
@@ -179,6 +183,7 @@ export async function sendLeadEmails(input: SendLeadEmailsInput) {
 
         <div style="margin-top: 28px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #64748b; text-align: center;">
           <p style="margin: 0; font-weight: bold; color: #1e293b;">Eduardo Ibarra — MOTORRAX BMW Motorrad</p>
+          <p style="margin: 4px 0 0 0;"><em>MOTORRAX in collaboration with NorthBikers</em></p>
           <p style="margin: 4px 0 0 0;">Monterrey, Nuevo León, México</p>
           <p style="margin: 4px 0 0 0;">WhatsApp: +52 81 2582 7777</p>
         </div>
@@ -186,7 +191,7 @@ export async function sendLeadEmails(input: SendLeadEmailsInput) {
     `;
 
     const userRes = await resend.emails.send({
-      from: "Eduardo Ibarra - MOTORRAX <onboarding@resend.dev>",
+      from: "Eduardo Ibarra - MOTORRAX <contacto@northbikers.com>",
       to: [input.email],
       subject: `¡Recibimos tu solicitud! ${input.desiredModel ? `- Detalles de ${input.desiredModel}` : ""} | MOTORRAX`,
       html: userHtml,
