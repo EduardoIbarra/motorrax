@@ -7,7 +7,7 @@ import { PublicLayoutWrapper } from "@/components/layout/PublicLayoutWrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://motorrax.com"),
+  metadataBase: new URL("https://www.motorrax.com"),
   title: {
     default: "BMW Motorrad Monterrey | Eduardo Ibarra • Motocicletas, Cotizaciones y Financiamiento",
     template: "%s | MOTORRAX BMW Motorrad Monterrey",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Trade in moto Monterrey",
     "MOTORRAX BMW",
   ],
-  authors: [{ name: "Eduardo Ibarra", url: "https://motorrax.com/conoce-eduardo" }],
+  authors: [{ name: "Eduardo Ibarra", url: "https://www.motorrax.com/conoce-eduardo" }],
   creator: "MOTORRAX SaaS Platform",
   publisher: "BMW Motorrad Monterrey",
   formatDetection: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "BMW Motorrad Monterrey | Eduardo Ibarra • Motocicletas 2026",
     description:
       "Asesoría ejecutiva personalizada en Monterrey. Descubre la nueva R 1300 GS, solicita tu financiamiento y agenda tu prueba de manejo hoy.",
-    url: "https://motorrax.com",
+    url: "https://www.motorrax.com",
     siteName: "MOTORRAX - BMW Motorrad Monterrey",
     locale: "es_MX",
     type: "website",
@@ -69,10 +69,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://motorrax.com",
+    canonical: "https://www.motorrax.com",
     languages: {
-      "es-MX": "https://motorrax.com",
-      "en-US": "https://motorrax.com/en",
+      "es-MX": "https://www.motorrax.com",
+      "en-US": "https://www.motorrax.com/en",
     },
   },
 };
@@ -87,9 +87,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "MotorcycleDealer",
     "name": "MOTORRAX • BMW Motorrad Monterrey",
-    "image": "https://motorrax.com/images/motorrax_logo_black.png",
-    "@id": "https://motorrax.com",
-    "url": "https://motorrax.com",
+    "image": "https://www.motorrax.com/images/motorrax_logo_black.png",
+    "@id": "https://www.motorrax.com",
+    "url": "https://www.motorrax.com",
     "telephone": "+528125827777",
     "priceRange": "$$$$",
     "address": {

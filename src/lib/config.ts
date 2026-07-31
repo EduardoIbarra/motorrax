@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Aventura en moto. Off-road. Comunidad.",
   description:
     "MOTORRAX es la comunidad de adventure motorcycle en México. Rodadas off-road, Rally ADV, guías para maxitrail y rutas por Nuevo León, Baja, Chiapas y más.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://motorrax.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.motorrax.com",
   locale: "es_MX",
   language: "es",
   social: {
