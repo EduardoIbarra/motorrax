@@ -2,13 +2,31 @@
 
 import React, { useState } from "react";
 import { PriceDisplay } from "@/components/shared/PriceDisplay";
-import { Calculator, CheckCircle, HelpCircle } from "lucide-react";
+import { Calculator, HelpCircle, Info, Sparkles } from "lucide-react";
+import { BMW_MODELS_DATA } from "@/lib/data/bmw-models";
 
 export const FinancingCalculator = () => {
-  const [vehiclePrice, setVehiclePrice] = useState<number>(512000);
+  const [selectedModelSlug, setSelectedModelSlug] = useState<string>(BMW_MODELS_DATA[0]?.slug || "r1300gs");
+  const [vehiclePrice, setVehiclePrice] = useState<number>(BMW_MODELS_DATA[0]?.msrpMxn || 512000);
   const [downPaymentPercent, setDownPaymentPercent] = useState<number>(30);
   const [termMonths, setTermMonths] = useState<number>(36);
   const [annualRatePercent] = useState<number>(14.5);
+
+  const selectedModel = BMW_MODELS_DATA.find((m) => m.slug === selectedModelSlug);
+
+  const handleModelChange = (slug: string) => {
+    setSelectedModelSlug(slug);
+    if (slug === "custom") return;
+    const model = BMW_MODELS_DATA.find((m) => m.slug === slug);
+    if (model) {
+      setVehiclePrice(model.msrpMxn);
+    }
+  };
+
+  const handlePriceChange = (val: number) => {
+    setVehiclePrice(val);
+    setSelectedModelSlug("custom");
+  };
 
   const downPaymentAmount = (vehiclePrice * downPaymentPercent) / 100;
   const loanAmount = vehiclePrice - downPaymentAmount;
@@ -35,6 +53,37 @@ export const FinancingCalculator = () => {
           </div>
         </div>
 
+        {/* Model Selector */}
+        <div>
+          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+            Selecciona el Modelo de tu Interés
+          </label>
+          <select
+            value={selectedModelSlug}
+            onChange={(e) => handleModelChange(e.target.value)}
+            className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-sky-600 font-bold text-slate-900 bg-slate-50 text-sm cursor-pointer"
+          >
+            {BMW_MODELS_DATA.map((m) => (
+              <option key={m.slug} value={m.slug}>
+                {m.name} — ${m.msrpMxn.toLocaleString("es-MX")} MXN
+              </option>
+            ))}
+            <option value="custom">Precio Personalizado</option>
+          </select>
+
+          {/* Base Model Notice */}
+          <div className="mt-2.5 p-3 rounded-xl bg-amber-50 border border-amber-200/80 flex items-start gap-2 text-xs text-amber-900">
+            <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <p className="leading-snug font-medium">
+              {selectedModelSlug !== "custom" && selectedModel ? (
+                <>Estás cotizando el <strong>modelo base</strong> de <strong>{selectedModel.name}</strong>. Paquetes de equipamiento o accesorios opcionales pueden variar el precio final.</>
+              ) : (
+                <>Nota: Los precios expresados corresponden a la versión base. Paquetes o accesorios adicionales se cotizan por separado.</>
+              )}
+            </p>
+          </div>
+        </div>
+
         {/* Vehicle Price */}
         <div>
           <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
@@ -43,7 +92,7 @@ export const FinancingCalculator = () => {
           <input
             type="number"
             value={vehiclePrice}
-            onChange={(e) => setVehiclePrice(Number(e.target.value) || 0)}
+            onChange={(e) => handlePriceChange(Number(e.target.value) || 0)}
             className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-sky-600 font-bold text-slate-900"
           />
         </div>
@@ -111,6 +160,12 @@ export const FinancingCalculator = () => {
 
         <div className="space-y-3 border-t border-b border-slate-200 py-4 text-xs">
           <div className="flex justify-between text-slate-600">
+            <span>Modelo:</span>
+            <span className="font-bold text-slate-900">
+              {selectedModelSlug !== "custom" && selectedModel ? selectedModel.name : "Personalizado"} (Modelo Base)
+            </span>
+          </div>
+          <div className="flex justify-between text-slate-600">
             <span>Precio Vehículo:</span>
             <span className="font-bold text-slate-900">${vehiclePrice.toLocaleString("es-MX")} MXN</span>
           </div>
@@ -129,7 +184,9 @@ export const FinancingCalculator = () => {
         </div>
 
         <a
-          href={`https://wa.me/528125827777?text=Hola%20Eduardo,%20quisiera%20solicitar%20financiamiento%20con%20mensualidad%20de%20$${Math.round(
+          href={`https://wa.me/528125827777?text=Hola%20Eduardo,%20quisiera%20solicitar%20financiamiento%20para%20${encodeURIComponent(
+            selectedModelSlug !== "custom" && selectedModel ? selectedModel.name : "una motocicleta BMW"
+          )}%20(Modelo%20Base)%20con%20mensualidad%20estimada%20de%20$${Math.round(
             estimatedMonthlyPayment
           ).toLocaleString("es-MX")}%20MXN`}
           target="_blank"

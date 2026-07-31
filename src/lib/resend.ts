@@ -1,8 +1,13 @@
 import { Resend } from "resend";
 import { BMW_MODELS_DATA } from "@/lib/data/bmw-models";
 
-const resendApiKey = process.env.RESEND_API_KEY || "";
-const resend = new Resend(resendApiKey);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return null;
+  }
+  return new Resend(apiKey);
+}
 
 const ADMIN_EMAIL = "eduardoibarra904@gmail.com";
 
@@ -19,6 +24,12 @@ interface SendLeadEmailsInput {
 export async function sendLeadEmails(input: SendLeadEmailsInput) {
   if (!input.email || !input.email.includes("@")) {
     return { success: false, reason: "No valid user email provided" };
+  }
+
+  const resend = getResendClient();
+  if (!resend) {
+    console.warn("RESEND_API_KEY is not configured in environment variables. Email sending skipped.");
+    return { success: false, reason: "RESEND_API_KEY not configured" };
   }
 
   // Find model details if model requested
