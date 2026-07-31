@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   Lock,
 } from "lucide-react";
+import { AnalyticsEvents } from "@/lib/analytics";
 
 export const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -52,6 +53,7 @@ export const Navbar = () => {
               href="https://wa.me/528125827777?text=Hola%20Eduardo,%20me%20interesa%20un%20BMW%20Motorrad"
               target="_blank"
               rel="noreferrer"
+              onClick={() => AnalyticsEvents.whatsappClick('top_bar')}
               className="hidden sm:flex items-center gap-1 hover:text-white transition-colors text-emerald-400 font-semibold"
               title="Enviar WhatsApp a Eduardo Ibarra"
             >
@@ -257,6 +259,7 @@ export const Navbar = () => {
             href="https://wa.me/528125827777?text=Hola%20Eduardo,%20quiero%20cotizar%20un%20BMW%20Motorrad%20en%20Monterrey"
             target="_blank"
             rel="noreferrer"
+            onClick={() => AnalyticsEvents.whatsappClick('navbar_cta')}
             className="px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-xl hover:bg-emerald-100 transition-all flex items-center gap-1.5 shadow-sm"
           >
             <Phone className="w-3.5 h-3.5" />

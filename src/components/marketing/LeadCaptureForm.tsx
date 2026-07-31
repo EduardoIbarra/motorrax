@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { CheckCircle2, Shield, Send } from "lucide-react";
 import { submitLeadAction } from "@/actions/leads";
+import { AnalyticsEvents } from "@/lib/analytics";
 
 interface LeadCaptureFormProps {
   title?: string;
@@ -41,6 +42,11 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
         requiresFinancing: formData.financing,
         hasTradeIn: formData.tradeIn,
         utmSource: "web_form",
+      });
+      AnalyticsEvents.leadFormSubmit({
+        model: formData.model,
+        leadType: formData.financing ? "quote_with_financing" : "quote_standard",
+        source: "lead_capture_form",
       });
       setSubmitted(true);
     } catch (err) {

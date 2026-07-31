@@ -5,6 +5,7 @@ import { BMW_MODELS_DATA, BmwModelData } from "@/lib/data/bmw-models";
 import { PriceDisplay } from "@/components/shared/PriceDisplay";
 import { CheckCircle2, Sparkles, ArrowRight, RotateCcw, Award, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { AnalyticsEvents } from "@/lib/analytics";
 
 interface ScoredModel {
   model: BmwModelData;
@@ -240,6 +241,9 @@ export const BMWFinderWidget = () => {
     } else {
       const results = calculateRecommendations(updated);
       setRecommendations(results);
+      if (results.length > 0) {
+        AnalyticsEvents.bmwFinderCompleted(results[0].model.name, results[0].matchPercentage);
+      }
       setStep(questions.length);
     }
   };

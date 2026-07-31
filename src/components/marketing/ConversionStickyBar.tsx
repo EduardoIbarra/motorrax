@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Sparkles, Phone, X } from "lucide-react";
+import { AnalyticsEvents } from "@/lib/analytics";
 
 export const ConversionStickyBar = () => {
   const [closed, setClosed] = useState(false);
@@ -57,6 +58,7 @@ export const ConversionStickyBar = () => {
             target="_blank"
             rel="noreferrer"
             aria-label="WhatsApp"
+            onClick={() => AnalyticsEvents.whatsappClick('sticky_bar')}
             className="px-2.5 py-1.5 sm:px-3 sm:py-2 border border-slate-700 hover:bg-slate-800 text-emerald-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider rounded-lg transition-colors flex items-center gap-1"
           >
             <Phone className="w-3.5 h-3.5" />
