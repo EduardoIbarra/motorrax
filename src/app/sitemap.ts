@@ -9,6 +9,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified: now, changeFrequency: "daily", priority: 1 },
     {
+      url: `${base}/modelos`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.95,
+    },
+    {
+      url: `${base}/conoce-eduardo`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${base}/comparativas`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/herramientas`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
       url: `${base}/rutas`,
       lastModified: now,
       changeFrequency: "daily",
@@ -42,7 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/contacto`,
       lastModified: now,
       changeFrequency: "yearly",
-      priority: 0.5,
+      priority: 0.8,
     },
     {
       url: `${base}/links`,

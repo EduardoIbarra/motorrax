@@ -18,6 +18,9 @@ export const siteConfig = {
   contact: {
     email: "hola@motorrax.com",
     venue: "Monterrey, Nuevo León, México",
+    phone: "81 2582 7777",
+    whatsapp: "+52 81 2582 7777",
+    whatsappRaw: "528125827777",
   },
 } as const;
 

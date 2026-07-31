@@ -1,86 +1,26 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0b0d10;
-  --foreground: #f4f1ea;
-  --muted: #9a958a;
-  --card: #14181f;
-  --card-border: #242b36;
-  --accent: #e85d04;
-  --accent-hover: #f48c06;
-  --accent-soft: rgba(232, 93, 4, 0.15);
-  --trail: #2d6a4f;
-  --sand: #d4a373;
-  --steel: #6c757d;
+@layer base {
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-card: var(--card);
-  --color-card-border: var(--card-border);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-soft: var(--accent-soft);
-  --color-trail: var(--trail);
-  --color-sand: var(--sand);
-  --color-steel: var(--steel);
-  --font-sans: var(--font-display);
-  --font-display: var(--font-display);
+/* Background darken overlay helper when text is placed on top of background images */
+.bg-overlay-dark {
+  position: relative;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-display), system-ui, sans-serif;
-}
-
-::selection {
-  background: var(--accent);
-  color: white;
-}
-
-/* Adventure grit texture overlay */
-.hero-grain::after {
+.bg-overlay-dark::before {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: rgba(15, 23, 42, 0.75);
+  z-index: 1;
 }
 
-.prose-route h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-top: 1.25rem;
-  margin-bottom: 0.5rem;
-  color: var(--foreground);
-}
-
-.prose-route p {
-  margin-bottom: 0.75rem;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.prose-route ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: var(--muted);
-}
-
-.prose-route li {
-  margin-bottom: 0.35rem;
-}
-
-.prose-route strong {
-  color: var(--foreground);
-  font-weight: 600;
+.bg-overlay-dark > * {
+  position: relative;
+  z-index: 2;
 }

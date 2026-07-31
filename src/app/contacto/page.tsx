@@ -8,6 +8,7 @@ import {
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/config";
 import { SectionHeading } from "@/components/SectionHeading";
+import { ContactFormClient } from "./ContactFormClient";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contacto",
@@ -78,46 +79,7 @@ export default function ContactoPage() {
         ))}
       </ul>
 
-      <form
-        className="mt-12 space-y-4 rounded-2xl border border-card-border bg-card p-6 sm:p-8"
-        action={`mailto:${siteConfig.contact.email}`}
-        method="get"
-      >
-        <h2 className="text-lg font-bold">Mensaje rápido</h2>
-        <p className="text-sm text-muted">
-          Abre tu cliente de correo con el asunto listo. También puedes escribir
-          directo a las redes.
-        </p>
-        <div>
-          <label htmlFor="subject" className="mb-1 block text-sm font-medium">
-            Asunto
-          </label>
-          <input
-            id="subject"
-            name="subject"
-            defaultValue="Hola MOTORRAX"
-            className="w-full rounded-xl border border-card-border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-accent"
-          />
-        </div>
-        <div>
-          <label htmlFor="body" className="mb-1 block text-sm font-medium">
-            Mensaje
-          </label>
-          <textarea
-            id="body"
-            name="body"
-            rows={5}
-            placeholder="Cuéntanos sobre tu proyecto, rodada o colaboración…"
-            className="w-full rounded-xl border border-card-border bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-accent"
-          />
-        </div>
-        <button
-          type="submit"
-          className="rounded-full bg-accent px-6 py-3 text-sm font-bold text-white hover:bg-accent-hover"
-        >
-          Enviar por email
-        </button>
-      </form>
+      <ContactFormClient />
     </div>
   );
 }
