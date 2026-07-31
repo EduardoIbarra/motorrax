@@ -18,16 +18,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!model) return {};
 
+  const localTitle = `${model.name} 2026 en Monterrey y San Pedro | Precio, Cotización y Financiamiento - Eduardo Ibarra`;
+  const localDesc = `¿Quieres comprar la nueva ${model.name} 2026 en Monterrey, San Pedro Garza García o Nuevo León? Cotízala hoy con Eduardo Ibarra. ${model.powerHp} HP, ${model.engineCapacityCc} cc. Precio desde $${model.msrpMxn.toLocaleString("es-MX")} MXN. Plan BMW Select, prueba de manejo y tomo a cuenta.`;
+
   return {
-    title: `${model.name} 2026 en Monterrey | Precio, Ficha Técnica y Cotización`,
-    description: `Cotiza la nueva ${model.name} 2026 en Monterrey con Eduardo Ibarra. ${model.powerHp} HP, ${model.torqueNm} Nm. Precio desde $${model.msrpMxn.toLocaleString("es-MX")} MXN*. Ficha técnica completa, fotos oficiales y prueba de manejo.`,
+    title: localTitle,
+    description: localDesc,
     keywords: [
       `${model.name} Monterrey`,
+      `Comprar ${model.name} San Pedro`,
+      `BMW ${model.name} Nuevo Leon`,
       `Precio ${model.name} Mexico`,
       `Ficha tecnica ${model.name}`,
-      `BMW Motorrad ${model.slug}`,
-      `Prueba de manejo ${model.name}`,
-      `Financiamiento BMW Select ${model.name}`,
+      `BMW Motorrad ${model.slug} Monterrey`,
+      `Prueba de manejo ${model.name} San Pedro`,
+      `Financiamiento BMW Select ${model.name} Monterrey`,
+      `Agencia BMW Motorrad San Pedro Garza Garcia`,
     ],
     authors: [{ name: "Eduardo Ibarra", url: "https://motorrax.com/conoce-eduardo" }],
     publisher: "BMW Motorrad Monterrey",
@@ -43,24 +49,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     },
     openGraph: {
-      title: `${model.name} 2026 | Ficha Técnica y Precio en Monterrey`,
-      description: model.tagline || model.description,
+      title: localTitle,
+      description: localDesc,
       url: `https://motorrax.com/modelos/${model.slug}`,
-      siteName: "MOTORRAX • BMW Motorrad Monterrey",
+      siteName: "MOTORRAX • BMW Motorrad Monterrey & San Pedro",
       type: "website",
       images: [
         {
           url: model.heroImage || "/images/motorrax_logo_black.png",
           width: 1200,
           height: 630,
-          alt: `${model.name} 2026 BMW Motorrad Monterrey`,
+          alt: `${model.name} 2026 BMW Motorrad Monterrey San Pedro`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${model.name} 2026 | BMW Motorrad Monterrey`,
-      description: `Cotiza la ${model.name} con Eduardo Ibarra en Monterrey.`,
+      title: localTitle,
+      description: localDesc,
       images: [model.heroImage || "/images/motorrax_logo_black.png"],
     },
     alternates: {

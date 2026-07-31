@@ -96,7 +96,7 @@ export default function RootLayout({
       "@type": "PostalAddress",
       "streetAddress": "Av. Vasconcelos",
       "addressLocality": "San Pedro Garza García",
-      "addressRegion": "NL",
+      "addressRegion": "Nuevo León",
       "postalCode": "66220",
       "addressCountry": "MX"
     },
@@ -105,6 +105,32 @@ export default function RootLayout({
       "latitude": 25.6572,
       "longitude": -100.3664
     },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Monterrey"
+      },
+      {
+        "@type": "City",
+        "name": "San Pedro Garza García"
+      },
+      {
+        "@type": "City",
+        "name": "Santa Catarina"
+      },
+      {
+        "@type": "City",
+        "name": "San Nicolás de los Garza"
+      },
+      {
+        "@type": "City",
+        "name": "Guadalupe"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Nuevo León"
+      }
+    ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],

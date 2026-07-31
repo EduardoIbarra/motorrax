@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
 import { getRouteIdsForSitemap } from "@/lib/data";
+import { BMW_MODELS_DATA } from "@/lib/data/bmw-models";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
@@ -95,5 +96,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // sitemap still works without dynamic routes
   }
 
-  return [...staticRoutes, ...routeEntries];
+  const modelEntries: MetadataRoute.Sitemap = BMW_MODELS_DATA.map((model) => ({
+    url: `${base}/modelos/${model.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
+
+  return [...staticRoutes, ...modelEntries, ...routeEntries];
 }
