@@ -30,7 +30,7 @@ function loadDatabaseUrl() {
     const line = fs.readFileSync(envPath, "utf8").split("\n").find((l) => l.startsWith("DATABASE_URL="));
     if (line) return line.slice("DATABASE_URL=".length).trim().replace(/^["']|["']$/g, "");
   }
-  return "postgresql://neondb_owner:npg_2lyXi0NuJPgx@ep-shy-grass-ax5d7o8w-pooler.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require";
+  return "";
 }
 
 function sleep(ms) {

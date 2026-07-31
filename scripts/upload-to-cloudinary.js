@@ -3,9 +3,9 @@ const path = require('path');
 const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dcy26pw70',
-  api_key: process.env.CLOUDINARY_API_KEY || '772983939396458',
-  api_secret: process.env.CLOUDINARY_API_SECRET || 'DwqGqswwcAQAniOmej7lYxgCoE4',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const MODELS_DIR = path.join(__dirname, '../public/images/models');
