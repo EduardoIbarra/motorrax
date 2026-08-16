@@ -14,8 +14,8 @@ export type LinkItem = {
   href: string;
   /** visual group */
   group: "featured" | "social" | "community" | "shop" | "partners" | "more";
-  /** Optional emoji or short badge */
-  badge?: string;
+  /** Icon key corresponding to premium SVG icon */
+  icon?: "carpuride" | "map" | "trophy" | "globe" | "youtube" | "facebook" | "instagram" | "tiktok" | "users" | "smartphone" | "shopping-bag" | "shield" | "wrench" | "book-open" | "mail";
   /** Highlight as primary CTA */
   featured?: boolean;
   /** Hide without deleting */
@@ -33,8 +33,8 @@ export const pitStopConfig = {
   headline: "MOTORRAX",
   tagline: "Aventura · Off-road · Comunidad",
   bio: "Todos mis links en un solo pit stop: redes, rodadas, rallies y gear ADV.",
-  /** Optional avatar path under /public */
-  avatar: "/og-default.svg",
+  /** Avatar logo path */
+  avatar: "/images/motorrax_logo_black.png",
 } as const;
 
 /**
@@ -44,13 +44,21 @@ export const pitStopConfig = {
 export const pitStopLinks: LinkItem[] = [
   // —— Featured CTAs ——
   {
+    id: "referral-carpuride",
+    title: "Carpuride (CarPlay / Android Auto)",
+    subtitle: "Descuento especial con código MOTORRAX",
+    href: "https://carpuride.com/discount/MOTORRAX?ref=motorrax",
+    group: "featured",
+    icon: "carpuride",
+    featured: true,
+  },
+  {
     id: "rutas",
     title: "Rutas y rodadas",
     subtitle: "Calendario adventure en vivo",
     href: "/rutas",
     group: "featured",
-    badge: "🔥",
-    featured: true,
+    icon: "map",
     sameTab: true,
   },
   {
@@ -59,90 +67,51 @@ export const pitStopLinks: LinkItem[] = [
     subtitle: "Baja · NL · Chiapas · y más",
     href: "/rallies",
     group: "featured",
-    badge: "🏁",
-    featured: true,
+    icon: "trophy",
     sameTab: true,
   },
   {
     id: "web",
-    title: "Sitio MOTORRAX",
+    title: "Sitio Web MOTORRAX",
     subtitle: "motorrax.com",
     href: "/",
     group: "featured",
+    icon: "globe",
     sameTab: true,
   },
 
   // —— Social ——
   {
-    id: "instagram",
-    title: "Instagram",
-    subtitle: "@_motorrax",
-    href: "https://www.instagram.com/_motorrax/",
-    group: "social",
-    badge: "📸",
-  },
-  {
     id: "youtube",
     title: "YouTube",
-    subtitle: "Guías ADV y exploraciones",
+    subtitle: "@_motorrax · Guías ADV y exploraciones",
     href: "https://www.youtube.com/@_motorrax",
     group: "social",
-    badge: "▶️",
+    icon: "youtube",
   },
   {
     id: "facebook",
     title: "Facebook",
-    subtitle: "/motorrax",
+    subtitle: "/motorrax · Comunidad y novedades",
     href: "https://www.facebook.com/motorrax/",
     group: "social",
-    badge: "👍",
+    icon: "facebook",
+  },
+  {
+    id: "instagram",
+    title: "Instagram",
+    subtitle: "@_motorrax · Fotos y reels",
+    href: "https://www.instagram.com/_motorrax/",
+    group: "social",
+    icon: "instagram",
   },
   {
     id: "tiktok",
     title: "TikTok",
-    subtitle: "Clips del grupo",
+    subtitle: "@motorrax · Clips y videos cortos",
     href: "https://www.tiktok.com/@motorrax",
     group: "social",
-    badge: "🎵",
-    // Set enabled: true when the account is ready
-    enabled: false,
-  },
-
-  // —— Community / apps ——
-  {
-    id: "northbikers",
-    title: "NorthBikers",
-    subtitle: "App y comunidad de rodadas",
-    href: "https://northbikers.com",
-    group: "community",
-    badge: "🗺️",
-  },
-  {
-    id: "app-legacy",
-    title: "App MOTORRAX / NorthBikers",
-    subtitle: "northbikers-mrx.web.app",
-    href: "https://northbikers-mrx.web.app/",
-    group: "community",
-  },
-
-  // —— Shop & merch ——
-  {
-    id: "tienda",
-    title: "Tienda / Merch",
-    subtitle: "Gorras, jerseys y rallies",
-    href: "/tienda",
-    group: "shop",
-    badge: "🛒",
-    sameTab: true,
-  },
-  // Example referral slots — replace href with your real codes
-  {
-    id: "referral-carpuride",
-    title: "Carpuride (CarPlay / Android Auto)",
-    subtitle: "Código MOTORRAX · descuento ADV",
-    href: "https://carpuride.com/?ref=motorrax",
-    group: "shop",
-    badge: "💬",
+    icon: "tiktok",
     enabled: true,
   },
 
@@ -153,6 +122,7 @@ export const pitStopLinks: LinkItem[] = [
     subtitle: "Aliado de rodadas",
     href: "https://www.instagram.com/bmwmotorrad_euromotorsmty",
     group: "partners",
+    icon: "shield",
   },
   {
     id: "kemimoto",
@@ -160,6 +130,7 @@ export const pitStopLinks: LinkItem[] = [
     subtitle: "Gear y equipo",
     href: "https://www.kemimoto.com/",
     group: "partners",
+    icon: "wrench",
   },
 
   // —— More ——
@@ -169,6 +140,7 @@ export const pitStopLinks: LinkItem[] = [
     subtitle: "Maxitrail, off-road y tips",
     href: "/guias",
     group: "more",
+    icon: "book-open",
     sameTab: true,
   },
   {
@@ -177,6 +149,7 @@ export const pitStopLinks: LinkItem[] = [
     subtitle: "hola@motorrax.com",
     href: "/contacto",
     group: "more",
+    icon: "mail",
     sameTab: true,
   },
 ];

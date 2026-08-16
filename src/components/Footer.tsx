@@ -4,6 +4,7 @@ import {
   InstagramIcon,
   FacebookIcon,
   YoutubeIcon,
+  TiktokIcon,
 } from "@/components/SocialIcons";
 import { siteConfig } from "@/lib/config";
 
@@ -59,13 +60,13 @@ export function Footer() {
           </h2>
           <div className="flex gap-3">
             <a
-              href={siteConfig.social.instagram}
+              href={siteConfig.social.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-card-border p-2.5 text-muted transition hover:border-accent hover:text-accent"
-              aria-label="Instagram MOTORRAX"
+              aria-label="YouTube MOTORRAX"
             >
-              <InstagramIcon className="h-5 w-5" />
+              <YoutubeIcon className="h-5 w-5" />
             </a>
             <a
               href={siteConfig.social.facebook}
@@ -77,13 +78,22 @@ export function Footer() {
               <FacebookIcon className="h-5 w-5" />
             </a>
             <a
-              href={siteConfig.social.youtube}
+              href={siteConfig.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-card-border p-2.5 text-muted transition hover:border-accent hover:text-accent"
-              aria-label="YouTube MOTORRAX"
+              aria-label="Instagram MOTORRAX"
             >
-              <YoutubeIcon className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5" />
+            </a>
+            <a
+              href={siteConfig.social.tiktok}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-card-border p-2.5 text-muted transition hover:border-accent hover:text-accent"
+              aria-label="TikTok MOTORRAX"
+            >
+              <TiktokIcon className="h-5 w-5" />
             </a>
           </div>
           <p className="mt-4 text-sm text-muted">

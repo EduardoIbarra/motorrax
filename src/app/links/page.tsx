@@ -1,7 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Mountain, Share2 } from "lucide-react";
+import {
+  ExternalLink,
+  Globe,
+  MapPin,
+  Mountain,
+  Share2,
+  Trophy,
+  ShieldCheck,
+  Wrench,
+  BookOpen,
+  Mail,
+  Smartphone,
+} from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/config";
 import {
@@ -13,12 +25,13 @@ import {
   InstagramIcon,
   FacebookIcon,
   YoutubeIcon,
+  TiktokIcon,
 } from "@/components/SocialIcons";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = buildMetadata({
   title: `${pitStopConfig.name} — todos mis links`,
-  description: `${pitStopConfig.bio} Instagram, YouTube, Facebook, rutas, Rally ADV y deals. Visita ${pitStopConfig.shortUrl}`,
+  description: `${pitStopConfig.bio} Instagram, YouTube, Facebook, TikTok, rutas, Rally ADV y deals. Visita ${pitStopConfig.shortUrl}`,
   path: "/links",
 });
 
@@ -40,13 +53,13 @@ export default function PitStopPage() {
       <div className="relative mx-auto flex w-full max-w-md flex-col px-4 pb-12 pt-10 sm:px-5">
         {/* Brand header */}
         <header className="mb-8 flex flex-col items-center text-center">
-          <div className="mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl border border-card-border bg-card shadow-xl shadow-accent/10">
+          <div className="mb-4 flex items-center justify-center">
             <Image
               src={pitStopConfig.avatar}
               alt={pitStopConfig.headline}
-              width={80}
-              height={80}
-              className="h-full w-full object-cover"
+              width={180}
+              height={56}
+              className="h-14 w-auto object-contain dark:invert"
               priority
             />
           </div>
@@ -69,11 +82,6 @@ export default function PitStopPage() {
           {/* Quick social row */}
           <div className="mt-5 flex items-center gap-2">
             <SocialRound
-              href={siteConfig.social.instagram}
-              label="Instagram"
-              icon={<InstagramIcon className="h-4 w-4" />}
-            />
-            <SocialRound
               href={siteConfig.social.youtube}
               label="YouTube"
               icon={<YoutubeIcon className="h-4 w-4" />}
@@ -82,6 +90,16 @@ export default function PitStopPage() {
               href={siteConfig.social.facebook}
               label="Facebook"
               icon={<FacebookIcon className="h-4 w-4" />}
+            />
+            <SocialRound
+              href={siteConfig.social.instagram}
+              label="Instagram"
+              icon={<InstagramIcon className="h-4 w-4" />}
+            />
+            <SocialRound
+              href={siteConfig.social.tiktok}
+              label="TikTok"
+              icon={<TiktokIcon className="h-4 w-4" />}
             />
           </div>
         </header>
@@ -127,32 +145,67 @@ export default function PitStopPage() {
   );
 }
 
+function ItemIcon({ icon, featured }: { icon?: LinkItem["icon"]; featured?: boolean }) {
+  const iconClasses = cn("h-5 w-5", featured ? "text-white" : "text-accent");
+
+  switch (icon) {
+    case "carpuride":
+      return <Smartphone className={iconClasses} />;
+    case "map":
+      return <MapPin className={iconClasses} />;
+    case "trophy":
+      return <Trophy className={iconClasses} />;
+    case "globe":
+      return <Globe className={iconClasses} />;
+    case "youtube":
+      return <YoutubeIcon className={iconClasses} />;
+    case "facebook":
+      return <FacebookIcon className={iconClasses} />;
+    case "instagram":
+      return <InstagramIcon className={iconClasses} />;
+    case "tiktok":
+      return <TiktokIcon className={iconClasses} />;
+    case "shield":
+      return <ShieldCheck className={iconClasses} />;
+    case "wrench":
+      return <Wrench className={iconClasses} />;
+    case "book-open":
+      return <BookOpen className={iconClasses} />;
+    case "mail":
+      return <Mail className={iconClasses} />;
+    default:
+      return null;
+  }
+}
+
 function LinkButton({ item }: { item: LinkItem }) {
   const external = item.href.startsWith("http");
   const className = cn(
-    "group flex w-full items-center gap-3 rounded-2xl border px-4 py-3.5 text-left transition",
+    "group flex w-full items-center gap-3.5 rounded-2xl border px-4 py-3.5 text-left transition duration-200",
     item.featured
-      ? "border-accent/50 bg-accent text-white shadow-lg shadow-accent/25 hover:bg-accent-hover"
-      : "border-card-border bg-card/90 backdrop-blur hover:border-accent/50 hover:bg-card",
+      ? "border-accent bg-slate-900 text-white shadow-xl shadow-accent/25 hover:bg-slate-800 hover:border-accent hover:shadow-accent/40"
+      : "border-card-border/80 bg-card/90 backdrop-blur hover:border-accent/40 hover:bg-card hover:shadow-md",
   );
 
   const inner = (
     <>
-      {item.badge && (
+      {item.icon && (
         <span
           className={cn(
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg",
-            item.featured ? "bg-white/15" : "bg-background",
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition-colors",
+            item.featured
+              ? "border-accent/40 bg-accent text-white"
+              : "border-card-border bg-background/80 text-accent group-hover:border-accent/30 group-hover:bg-accent-soft",
           )}
           aria-hidden
         >
-          {item.badge}
+          <ItemIcon icon={item.icon} featured={item.featured} />
         </span>
       )}
       <span className="min-w-0 flex-1">
         <span
           className={cn(
-            "block font-bold leading-tight",
+            "block font-extrabold leading-tight tracking-wide",
             item.featured ? "text-white" : "text-foreground",
           )}
         >
@@ -161,8 +214,8 @@ function LinkButton({ item }: { item: LinkItem }) {
         {item.subtitle && (
           <span
             className={cn(
-              "mt-0.5 block truncate text-xs",
-              item.featured ? "text-white/80" : "text-muted",
+              "mt-0.5 block truncate text-xs font-medium",
+              item.featured ? "text-slate-300" : "text-muted",
             )}
           >
             {item.subtitle}
@@ -172,8 +225,8 @@ function LinkButton({ item }: { item: LinkItem }) {
       {external && !item.sameTab && (
         <ExternalLink
           className={cn(
-            "h-4 w-4 shrink-0 opacity-50 transition group-hover:opacity-100",
-            item.featured && "text-white",
+            "h-4 w-4 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5",
+            item.featured ? "text-accent group-hover:text-white" : "text-muted group-hover:text-accent",
           )}
         />
       )}
