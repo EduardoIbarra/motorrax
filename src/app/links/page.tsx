@@ -59,7 +59,7 @@ export default function PitStopPage() {
               alt={pitStopConfig.headline}
               width={180}
               height={56}
-              className="h-14 w-auto object-contain dark:invert"
+              className="h-14 w-auto object-contain"
               priority
             />
           </div>
