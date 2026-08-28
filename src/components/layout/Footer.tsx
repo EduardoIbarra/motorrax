@@ -145,6 +145,11 @@ export const Footer = () => {
                   Comparativas de Modelos
                 </Link>
               </li>
+              <li>
+                <Link href="/carpuride" className="hover:text-white transition-colors" title="Guía Carpuride W502BS, W602BS y W702BS para BMW Motorrad">
+                  Carpuride para BMW Motorrad
+                </Link>
+              </li>
               {hasInventory && (
                 <li>
                   <Link href="/inventario" className="hover:text-white transition-colors" title="Inventario disponible con entrega inmediata en Monterrey">
@@ -200,4 +205,3 @@ export const Footer = () => {
     </footer>
   );
 };
-

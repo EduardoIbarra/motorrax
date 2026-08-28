@@ -1,0 +1,30 @@
+import type { Metadata } from "next";
+import { AffiliateNotice, Breadcrumbs, BuyButton, CompatibilityWarning, FeatureList, JsonLd, RelatedComparisons } from "@/components/carpuride/CarpurideUI";
+import { ComparisonTable } from "@/components/carpuride/ComparisonTable";
+import { CARPURIDE_502_702, commonFeatures } from "@/lib/carpuride";
+
+const url = "https://www.motorrax.com/carpuride/502bs-vs-702bs";
+export const metadata: Metadata = {
+  title: "Carpuride W502BS vs W702BS: comparación para BMW",
+  description: "Compara Carpuride W502BS vs W702BS: pantalla de 5 vs 7 pulgadas, funciones comunes, ventajas, compatibilidad y cuál conviene para tu BMW.",
+  alternates: { canonical: url },
+  openGraph: { title: "Carpuride W502BS vs W702BS: ¿5 o 7 pulgadas?", description: "Comparación clara para elegir pantalla CarPlay en tu BMW Motorrad.", url, type: "article", images: [{ url: "https://carpuride.com/cdn/shop/files/Carpuride_W702BS.jpg?v=1747392353", width: 1600, height: 1600, alt: "Carpuride W502BS y W702BS para BMW" }] },
+};
+const rows = [
+  { feature: "Pantalla", values: ['5" IPS táctil', '7" IPS táctil'] }, { feature: "Brillo", values: ["1,000 nits", "1,000 nits"] },
+  { feature: "CarPlay / Android Auto inalámbricos", values: ["Sí", "Sí"] }, { feature: "BMW Wonder Wheel", values: ["Sí", "Sí"] },
+  { feature: "Datos de moto y TPMS compatible", values: ["Sí", "Sí"] }, { feature: "Protección", values: ["IP67", "IP67"] },
+  { feature: "Bluetooth dual / intercom", values: ["Sí", "Sí"] }, { feature: "USB-C integrado", values: ["No", "No"] },
+  { feature: "Mejor para", values: ["Campo visual despejado, sport y cockpit compacto", "Lectura grande, touring y adventure"] },
+];
+const faqs = [["¿El W702BS tiene más funciones que el W502BS?","No en las funciones principales publicadas: comparten integración BMW, conectividad, sensores y protección. La diferencia decisiva es el tamaño de pantalla."],["¿Cuál ocupa menos espacio?","El W502BS, gracias a su pantalla de 5 pulgadas."],["¿Cuál se lee mejor de un vistazo?","El W702BS ofrece elementos visuales más grandes en sus 7 pulgadas, aunque también ocupa más campo visual."]];
+
+export default function ComparisonPage() {
+  const jsonLd = { "@context":"https://schema.org", "@graph":[{ "@type":"Article", headline:"Carpuride W502BS vs W702BS", description: metadata.description, inLanguage:"es-MX", mainEntityOfPage:url, author:{"@type":"Organization",name:"MOTORRAX"}, dateModified:"2026-08-27" }, {"@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Inicio",item:"https://www.motorrax.com"},{"@type":"ListItem",position:2,name:"Carpuride",item:"https://www.motorrax.com/carpuride"},{"@type":"ListItem",position:3,name:"W502BS vs W702BS",item:url}]},{"@type":"FAQPage",mainEntity:faqs.map(([name,text])=>({"@type":"Question",name,acceptedAnswer:{"@type":"Answer",text}}))}]};
+  return <div className="bg-slate-50 pb-24"><JsonLd data={jsonLd}/><main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8"><Breadcrumbs current="W502BS vs W702BS"/><header className="max-w-4xl"><p className="text-sm font-black uppercase tracking-widest text-sky-700">Comparación directa</p><h1 className="mt-3 text-4xl font-black leading-tight text-slate-950 sm:text-6xl">Carpuride W502BS vs W702BS: compacto o máxima visibilidad</h1><p className="mt-6 text-lg leading-8 text-slate-600">La respuesta corta: elige W502BS si quieres ocupar menos espacio; elige W702BS si priorizas mapas y controles más grandes. En las funciones esenciales son prácticamente iguales.</p><div className="mt-8 flex flex-wrap gap-3"><BuyButton href={CARPURIDE_502_702}>Comprar W502BS</BuyButton><BuyButton href={CARPURIDE_502_702} secondary>Comprar W702BS</BuyButton></div></header><div className="mt-10"><AffiliateNotice/></div>
+    <section className="mt-16"><h2 className="text-3xl font-black">Tabla W502BS vs W702BS</h2><p className="mt-3 text-slate-600">Datos consultados en la ficha oficial de la serie BS. Confirma cambios de producto antes de comprar.</p><div className="mt-6"><ComparisonTable models={["W502BS", "W702BS"]} rows={rows}/></div></section>
+    <section className="mt-16 grid gap-6 md:grid-cols-2"><article className="rounded-3xl border border-slate-200 bg-white p-7"><p className="text-5xl font-black text-sky-100">5″</p><h2 className="mt-3 text-2xl font-black">Elige W502BS si…</h2><ul className="mt-5 space-y-3 text-sm leading-6 text-slate-600"><li>• No quieres tapar el tablero ni ampliar demasiado el cockpit.</li><li>• Manejas una BMW sport o prefieres una instalación discreta.</li><li>• Lees bien interfaces compactas y valoras el menor volumen.</li></ul><div className="mt-7"><BuyButton href={CARPURIDE_502_702}>Ver W502BS</BuyButton></div></article><article className="rounded-3xl border border-sky-300 bg-sky-50 p-7"><p className="text-5xl font-black text-sky-200">7″</p><h2 className="mt-3 text-2xl font-black">Elige W702BS si…</h2><ul className="mt-5 space-y-3 text-sm leading-6 text-slate-700"><li>• Quieres rutas, botones y alertas más grandes de un vistazo.</li><li>• Haces touring o adventure y el cockpit tiene espacio.</li><li>• La legibilidad importa más que una instalación compacta.</li></ul><div className="mt-7"><BuyButton href={CARPURIDE_502_702}>Ver W702BS</BuyButton></div></article></section>
+    <section className="mt-16"><h2 className="text-3xl font-black">Lo que ambos modelos comparten</h2><div className="mt-6"><FeatureList items={commonFeatures}/></div></section><div className="mt-16"><CompatibilityWarning/></div>
+    <section className="mt-16"><h2 className="text-3xl font-black">Preguntas frecuentes</h2><div className="mt-6 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white px-6">{faqs.map(([q,a])=><details key={q} className="py-5"><summary className="cursor-pointer font-black">{q}</summary><p className="mt-3 text-sm leading-6 text-slate-600">{a}</p></details>)}</div></section><div className="mt-16"><RelatedComparisons exclude="/carpuride/502bs-vs-702bs"/></div></main></div>;
+}
+

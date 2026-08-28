@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "img.youtube.com",
       },
+      {
+        protocol: "https",
+        hostname: "carpuride.com",
+        pathname: "/cdn/shop/**",
+      },
     ],
   },
   poweredByHeader: false,
