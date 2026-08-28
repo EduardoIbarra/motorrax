@@ -5,7 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { BMW_MODELS_DATA } from "@/lib/data/bmw-models";
 import { siteConfig } from "@/lib/config";
-import { InstagramIcon, FacebookIcon, YoutubeIcon } from "@/components/SocialIcons";
+import {
+  InstagramIcon,
+  FacebookIcon,
+  YoutubeIcon,
+} from "@/components/SocialIcons";
 import { Phone, MapPin, ShieldCheck, Sparkles } from "lucide-react";
 
 export const Footer = () => {
@@ -21,7 +25,9 @@ export const Footer = () => {
           setHasInventory(data.hasInventory);
         }
       })
-      .catch((err) => console.error("Error checking inventory in footer:", err));
+      .catch((err) =>
+        console.error("Error checking inventory in footer:", err),
+      );
   }, []);
 
   return (
@@ -39,13 +45,20 @@ export const Footer = () => {
                 className="h-9 w-auto object-contain"
               />
             </div>
-            <p className="text-xs leading-relaxed text-slate-400 font-light" itemProp="description">
-              Plataforma digital ejecutiva para cotización, financiamiento BMW Select y adquisición de motocicletas BMW Motorrad 2026 en Monterrey y San Pedro Garza García con Eduardo Ibarra.
+            <p
+              className="text-xs leading-relaxed text-slate-400 font-light"
+              itemProp="description"
+            >
+              Plataforma digital ejecutiva para cotización, financiamiento BMW
+              Select y adquisición de motocicletas BMW Motorrad 2026 en
+              Monterrey y San Pedro Garza García con Eduardo Ibarra.
             </p>
 
             {/* Social Trust Links */}
             <div className="pt-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-2">Comunidad & Redes Sociales</span>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                Comunidad & Redes Sociales
+              </span>
               <div className="flex items-center gap-3">
                 <a
                   href={siteConfig.social.instagram}
@@ -98,7 +111,9 @@ export const Footer = () => {
           <div>
             <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4 flex items-center gap-1.5">
               <span>Catálogo BMW 2026</span>
-              <span className="text-[9px] bg-sky-900 text-sky-300 px-1.5 py-0.5 rounded font-mono">28+</span>
+              <span className="text-[9px] bg-sky-900 text-sky-300 px-1.5 py-0.5 rounded font-mono">
+                28+
+              </span>
             </h4>
             <ul className="space-y-2.5 text-xs">
               {topModels.map((model) => (
@@ -108,7 +123,9 @@ export const Footer = () => {
                     className="hover:text-white transition-colors flex items-center justify-between group"
                     title={`Ver ficha técnica y precio de ${model.name} 2026`}
                   >
-                    <span className="group-hover:text-sky-400 transition-colors">{model.name}</span>
+                    <span className="group-hover:text-sky-400 transition-colors">
+                      {model.name}
+                    </span>
                     <span className="text-[10px] text-slate-400 font-mono group-hover:text-slate-300">
                       ${Math.round(model.msrpMxn / 1000)}k MXN
                     </span>
@@ -128,42 +145,89 @@ export const Footer = () => {
 
           {/* Tools & Resources */}
           <div>
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">Herramientas & Asesoría</h4>
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">
+              Herramientas & Asesoría
+            </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/herramientas/finder" className="hover:text-white transition-colors" title="Quiz interactivo recomendador de motocicletas BMW">
+                <Link
+                  href="/herramientas/finder"
+                  className="hover:text-white transition-colors"
+                  title="Quiz interactivo recomendador de motocicletas BMW"
+                >
                   BMW Finder Interactive (IA)
                 </Link>
               </li>
               <li>
-                <Link href="/herramientas/calculadoras" className="hover:text-white transition-colors" title="Simulador de enganche y mensualidad BMW Select">
+                <Link
+                  href="/herramientas/calculadoras"
+                  className="hover:text-white transition-colors"
+                  title="Simulador de enganche y mensualidad BMW Select"
+                >
                   Simulador de Financiamiento
                 </Link>
               </li>
               <li>
-                <Link href="/comparativas" className="hover:text-white transition-colors" title="Comparativas frente a frente BMW vs Competencia">
+                <Link
+                  href="/comparativas"
+                  className="hover:text-white transition-colors"
+                  title="Comparativas frente a frente BMW vs Competencia"
+                >
                   Comparativas de Modelos
                 </Link>
               </li>
               <li>
-                <Link href="/carpuride" className="hover:text-white transition-colors" title="Guía Carpuride W502BS, W602BS y W702BS para BMW Motorrad">
+                <Link
+                  href="/carpuride"
+                  className="hover:text-white transition-colors"
+                  title="Guía Carpuride W502BS, W602BS y W702BS para BMW Motorrad"
+                >
                   Carpuride para BMW Motorrad
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bmw-motorrad/nuevo-leon"
+                  className="hover:text-white transition-colors"
+                  title="Comprar y cotizar BMW Motorrad en Nuevo León"
+                >
+                  BMW Motorrad Nuevo León
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bmw-motorrad/coahuila"
+                  className="hover:text-white transition-colors"
+                  title="Comprar y cotizar BMW Motorrad desde Coahuila"
+                >
+                  BMW Motorrad Coahuila
                 </Link>
               </li>
               {hasInventory && (
                 <li>
-                  <Link href="/inventario" className="hover:text-white transition-colors" title="Inventario disponible con entrega inmediata en Monterrey">
+                  <Link
+                    href="/inventario"
+                    className="hover:text-white transition-colors"
+                    title="Inventario disponible con entrega inmediata en Monterrey"
+                  >
                     Inventario Entrega Inmediata
                   </Link>
                 </li>
               )}
               <li>
-                <Link href="/conoce-eduardo" className="hover:text-white transition-colors" title="Perfil profesional y contacto de Eduardo Ibarra">
+                <Link
+                  href="/conoce-eduardo"
+                  className="hover:text-white transition-colors"
+                  title="Perfil profesional y contacto de Eduardo Ibarra"
+                >
                   Eduardo Ibarra (Asesor)
                 </Link>
               </li>
               <li className="pt-2 border-t border-slate-900">
-                <Link href="/admin/login" className="hover:text-white transition-colors font-mono text-[11px] text-slate-400 flex items-center gap-1">
+                <Link
+                  href="/admin/login"
+                  className="hover:text-white transition-colors font-mono text-[11px] text-slate-400 flex items-center gap-1"
+                >
                   <span>Portal Admin</span>
                 </Link>
               </li>
@@ -172,7 +236,9 @@ export const Footer = () => {
 
           {/* Legal Notice & Assurance */}
           <div>
-            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">Garantía & Aviso Legal</h4>
+            <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4">
+              Garantía & Aviso Legal
+            </h4>
             <div className="space-y-3 text-[11px] text-slate-400 font-light leading-relaxed">
               <div className="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
                 <div className="flex items-center gap-1.5 text-emerald-400 font-bold text-xs">
@@ -180,11 +246,13 @@ export const Footer = () => {
                   <span>3 Años de Garantía Oficial</span>
                 </div>
                 <p className="text-[10px] text-slate-400">
-                  Todas las unidades 2026 incluyen 3 años de garantía oficial de fábrica sin límite de kilometraje y asistencia vial.
+                  Todas las unidades 2026 incluyen 3 años de garantía oficial de
+                  fábrica sin límite de kilometraje y asistencia vial.
                 </p>
               </div>
               <p className="text-[10px] text-slate-400">
-                *Precios de lista sugeridos en pesos mexicanos (MXN) sujetos a cambios y disponibilidad de inventario en Monterrey.
+                *Precios de lista sugeridos en pesos mexicanos (MXN) sujetos a
+                cambios y disponibilidad de inventario en Monterrey.
               </p>
             </div>
           </div>
@@ -193,12 +261,15 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} MOTORRAX • BMW Motorrad Monterrey. Todos los derechos reservados.
+            © {new Date().getFullYear()} MOTORRAX • BMW Motorrad Monterrey.
+            Todos los derechos reservados.
           </div>
           <div className="mt-4 md:mt-0 flex items-center space-x-6 text-[11px] text-slate-400">
             <span>San Pedro Garza García, N.L.</span>
             <span>•</span>
-            <span className="text-sky-400 font-semibold">Atención con Eduardo Ibarra</span>
+            <span className="text-sky-400 font-semibold">
+              Atención con Eduardo Ibarra
+            </span>
           </div>
         </div>
       </div>

@@ -168,6 +168,10 @@ export function CompatibilityWarning() {
 export function RelatedComparisons({ exclude }: { exclude?: string }) {
   const links = [
     {
+      href: "/carpuride/carpuride-vs-chigee",
+      label: "Carpuride vs CHIGEE: comparación antes de comprar",
+    },
+    {
       href: "/carpuride/502bs-vs-702bs",
       label: "W502BS vs W702BS: compacto o máxima pantalla",
     },

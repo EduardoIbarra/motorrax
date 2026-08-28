@@ -246,6 +246,25 @@ export default function CarpuridePage() {
             </Link>
           </div>
         </section>
+        <section className="rounded-3xl border border-slate-200 bg-white p-8 sm:p-10">
+          <p className="text-sm font-black uppercase tracking-widest text-sky-700">
+            La alternativa más comparada
+          </p>
+          <h2 className="mt-2 text-3xl font-black">
+            Carpuride vs CHIGEE: precio, pantalla, cámaras y Wonder Wheel
+          </h2>
+          <p className="mt-4 max-w-3xl leading-7 text-slate-600">
+            ¿Estás entre Carpuride y CHIGEE —a veces escrito “Chingee”—? Revisa
+            nuestra comparación de montaje BMW, GPS, audio con casco, batería
+            del teléfono, manejo nocturno y tamaños antes de decidir.
+          </p>
+          <Link
+            href="/carpuride/carpuride-vs-chigee"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-black text-white hover:bg-sky-700"
+          >
+            Leer Carpuride vs CHIGEE <ArrowRight className="h-4 w-4" />
+          </Link>
+        </section>
         <CouponOffer href={CARPURIDE_COLLECTION} />
         <CompatibilityWarning />
         <section>
