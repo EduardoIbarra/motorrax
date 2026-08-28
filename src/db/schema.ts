@@ -1,4 +1,13 @@
-import { pgTable, text, timestamp, integer, boolean, numeric, uuid, jsonb } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  text,
+  timestamp,
+  integer,
+  boolean,
+  numeric,
+  uuid,
+  jsonb,
+} from "drizzle-orm/pg-core";
 
 // 1. Users & Roles
 export const users = pgTable("users", {
@@ -46,7 +55,8 @@ export const bmwModels = pgTable("bmw_models", {
   pros: jsonb("pros").$type<string[]>(),
   cons: jsonb("cons").$type<string[]>(),
   colors: jsonb("colors").$type<{ name: string; hex: string }[]>(),
-  accessories: jsonb("accessories").$type<{ name: string; priceMxn: number }[]>(),
+  accessories:
+    jsonb("accessories").$type<{ name: string; priceMxn: number }[]>(),
   heroImage: text("hero_image"),
   galleryImages: jsonb("gallery_images").$type<string[]>(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -55,7 +65,9 @@ export const bmwModels = pgTable("bmw_models", {
 // 4. Technical Data Detail Rows (Fichas Técnicas per Model)
 export const bmwModelSpecs = pgTable("bmw_model_specs", {
   id: uuid("id").defaultRandom().primaryKey(),
-  modelId: uuid("model_id").references(() => bmwModels.id, { onDelete: "cascade" }).notNull(),
+  modelId: uuid("model_id")
+    .references(() => bmwModels.id, { onDelete: "cascade" })
+    .notNull(),
   specCategory: text("spec_category").notNull(), // Motor, Prestaciones / Consumo, Sistema Eléctrico, Transmisión, Chasis / Frenos, Dimensiones / Pesos
   specKey: text("spec_key").notNull(),
   specValue: text("spec_value").notNull(),
@@ -74,7 +86,9 @@ export const inventory = pgTable("inventory", {
   status: text("status").notNull().default("available"), // available, reserved, sold, incoming, demo
   priceMxn: numeric("price_mxn").notNull(),
   location: text("location").notNull().default("Monterrey Showroom"),
-  assignedSalespersonId: uuid("assigned_salesperson_id").references(() => users.id),
+  assignedSalespersonId: uuid("assigned_salesperson_id").references(
+    () => users.id,
+  ),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -100,7 +114,9 @@ export const leads = pgTable("leads", {
   buyingTimeline: text("buying_timeline"), // immediate, 30_days, 60_days, 90_days
   notes: text("notes"),
   tags: jsonb("tags").$type<string[]>(),
-  assignedSalespersonId: uuid("assigned_salesperson_id").references(() => users.id),
+  assignedSalespersonId: uuid("assigned_salesperson_id").references(
+    () => users.id,
+  ),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
@@ -108,12 +124,16 @@ export const leads = pgTable("leads", {
 // 7. Opportunities / Pipeline
 export const opportunities = pgTable("opportunities", {
   id: uuid("id").defaultRandom().primaryKey(),
-  leadId: uuid("lead_id").references(() => leads.id).notNull(),
+  leadId: uuid("lead_id")
+    .references(() => leads.id)
+    .notNull(),
   customerId: uuid("customer_id").references(() => customers.id),
   title: text("title").notNull(),
   stage: text("stage").notNull().default("new"), // new, qualified, contacted, scheduled, test_ride, negotiation, won, lost, archived
   valueMxn: numeric("value_mxn"),
-  assignedSalespersonId: uuid("assigned_salesperson_id").references(() => users.id),
+  assignedSalespersonId: uuid("assigned_salesperson_id").references(
+    () => users.id,
+  ),
   lostReason: text("lost_reason"),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -148,7 +168,9 @@ export const activities = pgTable("activities", {
 // 10. Appointments
 export const appointments = pgTable("appointments", {
   id: uuid("id").defaultRandom().primaryKey(),
-  leadId: uuid("lead_id").references(() => leads.id).notNull(),
+  leadId: uuid("lead_id")
+    .references(() => leads.id)
+    .notNull(),
   type: text("type").notNull().default("test_ride"), // test_ride, showroom_visit, consultation
   scheduledAt: timestamp("scheduled_at").notNull(),
   status: text("status").notNull().default("scheduled"), // scheduled, completed, cancelled, rescheduled
@@ -160,10 +182,16 @@ export const appointments = pgTable("appointments", {
 // 11. Commissions
 export const commissions = pgTable("commissions", {
   id: uuid("id").defaultRandom().primaryKey(),
-  salespersonId: uuid("salesperson_id").references(() => users.id).notNull(),
-  opportunityId: uuid("opportunity_id").references(() => opportunities.id).notNull(),
+  salespersonId: uuid("salesperson_id")
+    .references(() => users.id)
+    .notNull(),
+  opportunityId: uuid("opportunity_id")
+    .references(() => opportunities.id)
+    .notNull(),
   amountMxn: numeric("amount_mxn").notNull(),
-  commissionRatePercent: numeric("commission_rate_percent").notNull().default("3.0"),
+  commissionRatePercent: numeric("commission_rate_percent")
+    .notNull()
+    .default("3.0"),
   status: text("status").notNull().default("pending"), // pending, approved, paid
   approvedAt: timestamp("approved_at"),
   paidAt: timestamp("paid_at"),
@@ -186,7 +214,9 @@ export const campaigns = pgTable("campaigns", {
 // 13. Digital Deliveries
 export const digitalDeliveries = pgTable("digital_deliveries", {
   id: uuid("id").defaultRandom().primaryKey(),
-  opportunityId: uuid("opportunity_id").references(() => opportunities.id).notNull(),
+  opportunityId: uuid("opportunity_id")
+    .references(() => opportunities.id)
+    .notNull(),
   customerName: text("customer_name").notNull(),
   vin: text("vin").notNull(),
   detailedInspected: boolean("detailed_inspected").default(false),
@@ -212,5 +242,43 @@ export const auditLogs = pgTable("audit_logs", {
   entity: text("entity").notNull(),
   entityId: text("entity_id"),
   details: jsonb("details"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+// First-party, privacy-conscious web analytics. Visitor IDs are anonymous random tokens.
+export const analyticsSessions = pgTable("analytics_sessions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  visitorId: text("visitor_id").notNull().unique(),
+  landingPage: text("landing_page").notNull(),
+  referrer: text("referrer"),
+  utmSource: text("utm_source"),
+  utmMedium: text("utm_medium"),
+  utmCampaign: text("utm_campaign"),
+  deviceType: text("device_type"),
+  startedAt: timestamp("started_at").defaultNow().notNull(),
+  lastSeenAt: timestamp("last_seen_at").defaultNow().notNull(),
+});
+
+export const analyticsEvents = pgTable("analytics_events", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  sessionId: uuid("session_id")
+    .references(() => analyticsSessions.id, { onDelete: "cascade" })
+    .notNull(),
+  visitorId: text("visitor_id").notNull(),
+  eventName: text("event_name").notNull(),
+  path: text("path").notNull(),
+  label: text("label"),
+  metadata:
+    jsonb("metadata").$type<Record<string, string | number | boolean | null>>(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const adminSessions = pgTable("admin_sessions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  userId: uuid("user_id")
+    .references(() => users.id, { onDelete: "cascade" })
+    .notNull(),
+  token: text("token").notNull().unique(),
+  expiresAt: timestamp("expires_at").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });

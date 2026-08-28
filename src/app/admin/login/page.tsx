@@ -3,21 +3,31 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, ShieldCheck, ArrowRight, Sparkles } from "lucide-react";
+import { Lock, Mail, ShieldCheck, ArrowRight } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("eduardo.ibarra@motorrax.com");
-  const [password, setPassword] = useState("••••••••••••");
-  const [role, setRole] = useState("sales_manager");
+  const [email, setEmail] = useState("eduardoibarra904@gmail.com");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      router.push("/admin/crm");
-    }, 600);
+    setError("");
+    const response = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    setLoading(false);
+    if (!response.ok) {
+      setError("Correo o contraseña incorrectos.");
+      return;
+    }
+    router.push("/admin/analytics");
+    router.refresh();
   };
 
   return (
@@ -35,30 +45,17 @@ export default function AdminLoginPage() {
             />
           </div>
           <div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">Acceso Portal Administrativo</h2>
-            <p className="text-xs text-slate-500 mt-1">Plataforma de Operaciones, CRM & BI BMW Monterrey</p>
+            <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+              Acceso Portal Administrativo
+            </h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Plataforma de Operaciones, CRM & BI BMW Monterrey
+            </p>
           </div>
         </div>
 
         {/* Form */}
         <form onSubmit={handleLogin} className="space-y-5">
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
-              Rol de Usuario
-            </label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-sky-600 text-xs font-bold text-slate-900 bg-white"
-            >
-              <option value="superadmin">Super Admin (Acceso Total SaaS)</option>
-              <option value="admin">Admin Dealership</option>
-              <option value="sales_manager">Sales Manager (Eduardo Ibarra)</option>
-              <option value="salesperson">Salesperson (Vendedor)</option>
-              <option value="marketing">Marketing Specialist</option>
-            </select>
-          </div>
-
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
               Correo Electrónico
@@ -74,6 +71,14 @@ export default function AdminLoginPage() {
               />
             </div>
           </div>
+          {error && (
+            <p
+              role="alert"
+              className="rounded-xl bg-rose-50 p-3 text-xs font-bold text-rose-700"
+            >
+              {error}
+            </p>
+          )}
 
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
@@ -100,7 +105,7 @@ export default function AdminLoginPage() {
               <span>Autenticando...</span>
             ) : (
               <>
-                <span>Ingresar al CRM Dashboard</span>
+                <span>Ingresar a Analítica</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}

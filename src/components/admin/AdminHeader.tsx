@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Search, Bell, Plus, Sparkles, User, LogOut, ChevronDown } from "lucide-react";
+import { Search, Bell, Plus, LogOut } from "lucide-react";
 import Link from "next/link";
 
 interface AdminHeaderProps {
@@ -12,6 +12,10 @@ interface AdminHeaderProps {
 export const AdminHeader: React.FC<AdminHeaderProps> = ({ onOpenSearch }) => {
   const pathname = usePathname();
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const logout = async () => {
+    await fetch("/api/admin/logout", { method: "POST" });
+    window.location.href = "/admin/login";
+  };
 
   // Generate breadcrumb titles from pathname
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -46,7 +50,13 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ onOpenSearch }) => {
         {breadcrumbText.map((text, idx) => (
           <React.Fragment key={idx}>
             {idx > 0 && <span>/</span>}
-            <span className={idx === breadcrumbText.length - 1 ? "text-slate-900 font-bold" : ""}>
+            <span
+              className={
+                idx === breadcrumbText.length - 1
+                  ? "text-slate-900 font-bold"
+                  : ""
+              }
+            >
               {text}
             </span>
           </React.Fragment>
@@ -75,6 +85,14 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ onOpenSearch }) => {
           <Plus className="w-4 h-4" />
           <span className="hidden sm:inline">Nuevo Lead</span>
         </Link>
+        <button
+          onClick={logout}
+          className="rounded-xl p-2 text-slate-500 hover:bg-rose-50 hover:text-rose-700"
+          aria-label="Cerrar sesión"
+          title="Cerrar sesión"
+        >
+          <LogOut className="h-5 w-5" />
+        </button>
 
         {/* Notifications */}
         <div className="relative">
@@ -89,17 +107,29 @@ export const AdminHeader: React.FC<AdminHeaderProps> = ({ onOpenSearch }) => {
           {notificationsOpen && (
             <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl p-4 space-y-3 z-50 text-xs">
               <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                <span className="font-bold text-slate-900">Notificaciones Recientes</span>
-                <span className="text-[10px] text-sky-600 font-semibold">Limpiar</span>
+                <span className="font-bold text-slate-900">
+                  Notificaciones Recientes
+                </span>
+                <span className="text-[10px] text-sky-600 font-semibold">
+                  Limpiar
+                </span>
               </div>
               <div className="space-y-2">
                 <div className="p-2.5 bg-sky-50 rounded-xl border border-sky-100">
-                  <span className="font-bold text-slate-900 block">Nuevo Lead Recibido</span>
-                  <span className="text-[11px] text-slate-600">Carlos Villarreal cotizó BMW R 1300 GS desde YouTube</span>
+                  <span className="font-bold text-slate-900 block">
+                    Nuevo Lead Recibido
+                  </span>
+                  <span className="text-[11px] text-slate-600">
+                    Carlos Villarreal cotizó BMW R 1300 GS desde YouTube
+                  </span>
                 </div>
                 <div className="p-2.5 bg-emerald-50 rounded-xl border border-emerald-100">
-                  <span className="font-bold text-slate-900 block">Cita Confirmada</span>
-                  <span className="text-[11px] text-slate-600">Prueba de manejo agendada para mañana 11:00 AM</span>
+                  <span className="font-bold text-slate-900 block">
+                    Cita Confirmada
+                  </span>
+                  <span className="text-[11px] text-slate-600">
+                    Prueba de manejo agendada para mañana 11:00 AM
+                  </span>
                 </div>
               </div>
             </div>
