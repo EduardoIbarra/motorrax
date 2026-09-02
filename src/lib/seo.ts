@@ -125,16 +125,24 @@ export function eventJsonLd(route: {
   title: string;
   description?: string | null;
   start_timestamp?: string | null;
+  end_timestamp?: string | null;
   venue?: string | null;
   banner?: string | null;
+  amount?: number | null;
+  purchase_available?: boolean | null;
+  website_url?: string | null;
   id: number;
 }) {
+  const eventUrl = `${siteConfig.url}/rutas/${route.id}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "Event",
     name: route.title,
     description: route.description || undefined,
     startDate: route.start_timestamp || undefined,
+    // A route without a separate finish time is treated as a same-day event.
+    endDate: route.end_timestamp || route.start_timestamp || undefined,
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     image: route.banner || undefined,
@@ -153,6 +161,23 @@ export function eventJsonLd(route: {
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    url: `${siteConfig.url}/rutas/${route.id}`,
+    performer: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    offers:
+      route.amount != null
+        ? {
+            "@type": "Offer",
+            price: route.amount,
+            priceCurrency: "MXN",
+            url: route.website_url || eventUrl,
+            availability: route.purchase_available
+              ? "https://schema.org/InStock"
+              : undefined,
+          }
+        : undefined,
+    url: eventUrl,
   };
 }
