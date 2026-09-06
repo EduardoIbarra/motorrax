@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
 import { getRouteIdsForSitemap } from "@/lib/data";
 import { BMW_MODELS_DATA } from "@/lib/data/bmw-models";
+import { BMW_COMPARISONS_DATA } from "@/lib/data/bmw-comparisons";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
@@ -28,7 +29,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${base}/herramientas`,
+      url: `${base}/herramientas/calculadoras`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${base}/herramientas/finder`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
@@ -117,6 +124,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${base}/inventario`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.9,
+    },
+    {
+      url: `${base}/landings/r1300gs`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${base}/landings/comprar-moto-bmw-monterrey`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
   ];
 
   let routeEntries: MetadataRoute.Sitemap = [];
@@ -139,5 +164,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...modelEntries, ...routeEntries];
+  const comparisonEntries: MetadataRoute.Sitemap = BMW_COMPARISONS_DATA.map(
+    (comparison) => ({
+      url: `${base}/comparativas/${comparison.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    }),
+  );
+
+  return [
+    ...staticRoutes,
+    ...modelEntries,
+    ...comparisonEntries,
+    ...routeEntries,
+  ];
 }

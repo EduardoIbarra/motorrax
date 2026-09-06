@@ -3,7 +3,10 @@ export const siteConfig = {
   tagline: "Aventura en moto. Off-road. Comunidad.",
   description:
     "MOTORRAX es la comunidad de adventure motorcycle en México. Rodadas off-road, Rally ADV, guías para maxitrail y rutas por Nuevo León, Baja, Chiapas y más.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.motorrax.com",
+  // Keep the canonical origin deterministic. A deployment environment variable
+  // previously pointed this at motorrax.net, causing every URL in the sitemap
+  // served from motorrax.com to be rejected by Google Search Console.
+  url: "https://www.motorrax.com",
   locale: "es_MX",
   language: "es",
   social: {
