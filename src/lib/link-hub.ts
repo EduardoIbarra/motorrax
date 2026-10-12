@@ -44,10 +44,19 @@ export const pitStopConfig = {
 export const pitStopLinks: LinkItem[] = [
   // —— Featured CTAs ——
   {
-    id: "referral-carpuride",
-    title: "Carpuride (CarPlay / Android Auto)",
-    subtitle: "Descuento especial con código MOTORRAX",
-    href: "https://carpuride.com/discount/MOTORRAX?ref=motorrax",
+    id: "carpuride-w603ds",
+    title: "Carpuride W603DS",
+    subtitle: "Pantalla de 6\" · Cámaras duales · CarPlay / Android Auto",
+    href: "https://carpuride.com/products/carpuride-w603ds-with-optional-tpms-6-inch-motorcycle-carplay-plug-and-play-bm05-bracket-dual-cameras?_pos=2&_sid=da0ba04e2&_ss=r&ref=motorrax",
+    group: "featured",
+    icon: "carpuride",
+    featured: true,
+  },
+  {
+    id: "carpuride-w602bs",
+    title: "Carpuride W602BS",
+    subtitle: "Pantalla de 6\" para BMW · CarPlay / Android Auto",
+    href: "https://carpuride.com/collections/bs-motorcycle-series/products/carpuride-w602bs-motorcycle-stereo?ref=motorrax",
     group: "featured",
     icon: "carpuride",
     featured: true,
