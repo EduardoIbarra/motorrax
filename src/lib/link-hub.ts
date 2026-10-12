@@ -108,8 +108,8 @@ export const pitStopLinks: LinkItem[] = [
   {
     id: "tiktok",
     title: "TikTok",
-    subtitle: "@motorrax · Clips y videos cortos",
-    href: "https://www.tiktok.com/@motorrax",
+    subtitle: "@_motorrax · Clips y videos cortos",
+    href: "https://www.tiktok.com/@_motorrax",
     group: "social",
     icon: "tiktok",
     enabled: true,

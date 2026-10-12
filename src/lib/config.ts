@@ -13,7 +13,7 @@ export const siteConfig = {
     instagram: "https://www.instagram.com/_motorrax/",
     facebook: "https://www.facebook.com/motorrax/",
     youtube: "https://www.youtube.com/@_motorrax",
-    tiktok: "https://www.tiktok.com/@motorrax",
+    tiktok: "https://www.tiktok.com/@_motorrax",
   },
   partners: {
     northbikers: "https://northbikers.com",
